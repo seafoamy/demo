@@ -43,9 +43,15 @@ jobs:
           git push origin ${GITHUB_REF##*/}
 
   testJob:
+    needs: build
     name: Get feature metrics
     runs-on: ubuntu-latest
     steps:
+
+    steps:
+      - name: Access the repo
+        uses: actions/checkout@v2 
+
       - id: set_var
         run: |
           content=`cat data.json`
