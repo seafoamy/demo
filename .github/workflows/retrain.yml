@@ -37,4 +37,4 @@ jobs:
           git config --global user.name 'seafoamy'
           git config --global user.email 'seafoamy@myyahoo.com'
           git commit -am "github action commit"
-          git push origin master
+          git push origin main
