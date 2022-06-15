@@ -34,6 +34,7 @@ jobs:
       - name: commit changes
         run: |
           # Stage the file, commit and push
-          git add .
-          git commit -m "github action commit"
+          git config --global user.name 'seafoamy'
+          git config --global user.email 'seafoamy@myyahoo.com'
+          git commit -am "github action commit"
           git push origin master
