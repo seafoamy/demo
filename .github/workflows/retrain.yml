@@ -83,7 +83,7 @@ jobs:
           # end of optional handling for multi line json
           echo "::set-output name=feature_data::$content"
 
-      - if: ${{needs.testJob.outputs.output1}} < ${{fromJson(steps.set_var.outputs.feature_data).Accuracy}}
+        if: ${{needs.testJob.outputs.output1}} < ${{fromJson(steps.set_var.outputs.feature_data).Accuracy}}
       - steps:
         - name: Access the repo
           uses: actions/checkout@v3
