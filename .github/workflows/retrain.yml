@@ -41,3 +41,19 @@ jobs:
           git config --global user.email 'seafoamy@myyahoo.com'
           git commit -am "github action commit"
           git push origin ${GITHUB_REF##*/}
+
+  testJob:
+    name: Get feature metrics
+    runs-on: ubuntu-latest
+    steps:
+      - id: set_var
+        run: |
+          content=`cat data.json`
+          # the following lines are only required for multi line json
+          content="${content//'%'/'%25'}"
+          content="${content//$'\n'/'%0A'}"
+          content="${content//$'\r'/'%0D'}"
+          # end of optional handling for multi line json
+          echo "::set-output name=feature_data::$content"
+      - run: |
+          echo "${{fromJson(steps.set_var.outputs.feature_data).Accuracy}}"
