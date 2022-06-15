@@ -46,7 +46,6 @@ jobs:
     needs: build
     name: Get feature metrics
     runs-on: ubuntu-latest
-    steps:
 
     steps:
       - name: Access the repo
