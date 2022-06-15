@@ -3,5 +3,5 @@ category_encoders
 scikit-learn
 numpy
 joblib
-yaml
+pyyaml
 json
