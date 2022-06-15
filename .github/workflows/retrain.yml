@@ -82,7 +82,8 @@ jobs:
           content="${content//$'\r'/'%0D'}"
           # end of optional handling for multi line json
           echo "::set-output name=feature_data::$content"
-      - if: ${{needs.testJob.outputs.output1}} < ${{fromJson(steps.set_var.outputs.feature_data).Accuracy}}
+        #< ${{fromJson(steps.set_var.outputs.feature_data).Accuracy}}
+      - if: ${{needs.testJob.outputs.output1}} 
       - steps:
         - uses: actions/checkout@v3
         - name: Create Pull Request
