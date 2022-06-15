@@ -1,5 +1,3 @@
-os
-sys
 pandas
 category_encoders
 scikit-learn
