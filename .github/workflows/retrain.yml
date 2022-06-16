@@ -86,6 +86,12 @@ jobs:
       #if: ${{needs.testJob.outputs.output1}} < ${{fromJson(steps.set_var.outputs.feature_data).Accuracy}}
       - name: Access the repo
         uses: actions/checkout@v3
+        with:
+          ref: feature
         
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
+          commit-message: this was done automatically
+          title: Git action auto update
+          body: Fix our changes
+          branch: ${GITHUB_REF##*/}
