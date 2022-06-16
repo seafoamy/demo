@@ -95,4 +95,4 @@ jobs:
           commit-message: this was done automatically
           title: Git action auto update
           body: Fix our changes
-          branch: ${GITHUB_REF##*/}
+          branch: feature
