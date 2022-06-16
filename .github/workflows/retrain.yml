@@ -63,36 +63,36 @@ jobs:
           # end of optional handling for multi line json
           echo "::set-output name=feature_data::$content"
 
-  mainMetrics:
-    needs: testJob
-    name: Get main metrics
-    runs-on: ubuntu-latest
-    steps:
-      - name: Access the repo
-        uses: actions/checkout@v3
-        with:
-          ref: main 
+  # mainMetrics:
+  #   needs: testJob
+  #   name: Get main metrics
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Access the repo
+  #       uses: actions/checkout@v3
+  #       with:
+  #         ref: main 
 
-      - id: set_var
-        run: |
-          content=`cat data.json`
-          # the following lines are only required for multi line json
-          content="${content//'%'/'%25'}"
-          content="${content//$'\n'/'%0A'}"
-          content="${content//$'\r'/'%0D'}"
-          # end of optional handling for multi line json
-          echo "::set-output name=feature_data::$content"
+  #     - id: set_var
+  #       run: |
+  #         content=`cat data.json`
+  #         # the following lines are only required for multi line json
+  #         content="${content//'%'/'%25'}"
+  #         content="${content//$'\n'/'%0A'}"
+  #         content="${content//$'\r'/'%0D'}"
+  #         # end of optional handling for multi line json
+  #         echo "::set-output name=feature_data::$content"
 
-      #if: ${{needs.testJob.outputs.output1}} < ${{fromJson(steps.set_var.outputs.feature_data).Accuracy}}
-      - name: Access the repo
-        uses: actions/checkout@v3
-        with:
-          ref: main
+  #     #if: ${{needs.testJob.outputs.output1}} < ${{fromJson(steps.set_var.outputs.feature_data).Accuracy}}
+  #     - name: Access the repo
+  #       uses: actions/checkout@v3
+  #       with:
+  #         ref: main
         
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
-        with:
-          commit-message: this was done automatically
-          title: Git action auto update
-          body: Fix our changes
-          branch: feature
+  #     - name: Create Pull Request
+  #       uses: peter-evans/create-pull-request@v4
+  #       with:
+  #         commit-message: this was done automatically
+  #         title: Git action auto update
+  #         body: Fix our changes
+  #         branch: feature
