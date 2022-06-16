@@ -84,10 +84,6 @@ jobs:
           echo "::set-output name=feature_data::$content"
 
       #if: ${{needs.testJob.outputs.output1}} < ${{fromJson(steps.set_var.outputs.feature_data).Accuracy}}
-      - name: Access the repo
-        uses: actions/checkout@v3
-        with:
-          ref: main
         
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
@@ -96,3 +92,4 @@ jobs:
           title: Git action auto update
           body: Fix our changes
           branch: feature
+          base: main
